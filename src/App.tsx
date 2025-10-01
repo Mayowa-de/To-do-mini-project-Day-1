@@ -1,12 +1,11 @@
-import { useState } from 'react'
-
+import Counter from './Counter/Counter'
+import './index.css'
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-
-    </>
+    <div className='flex flex-col justify-center items-center w-full min-h-screen'>
+      <Counter/>
+    </div>
   )
 }
 
