@@ -2,21 +2,13 @@ import { useEffect, useState } from "react"
 
 
 export default function Counter() {
-    // initialize the state value and tracking it
-    const [value, setValue] = useState(0);
+    // initialize the state value and getting the state
+    const [value, setValue] = useState<number>(()=>{
+         const saved  = localStorage.getItem('value');
+         return saved ? Number(saved) : 0;
+    });
     // declare default value to reset the state of the value
     const resetValue : number  = 0;
-    // retrieving value from the localStorage
-    useEffect(()=>{
-       const saved  = localStorage.getItem('value');
-       if(saved !== null){
-         const saveValue : number =  Number(saved);
-          setValue(saveValue);
-       }else{
-        const saveValue : number = 0;
-        setValue(saveValue);
-       }
-    },[]);
     // save value to localStorage
     useEffect(()=>{
          localStorage.setItem('value', value.toString());
